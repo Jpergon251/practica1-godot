@@ -1,6 +1,8 @@
 extends CharacterBody2D
+@onready var shooting_point: Node2D = $ShootingPoint
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
+const BULLET = preload("res://scenes/bullet.tscn")
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
@@ -42,6 +44,32 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	
+	
+	if Input.is_action_just_pressed("attack"):
+		shoot()
 
 	move_and_slide()
+	
+func shoot():
+	# Instanciar el proyectil como un RigidBody2D
+	var bullet = BULLET.instantiate() as RigidBody2D
 
+	# Configurar la posición inicial del proyectil en el punto de disparo
+	bullet.position = shooting_point.global_position
+
+	# Determinar la dirección del impulso basado en la orientación del personaje
+	var impulse_direction = Vector2()  # Inicializar el vector de dirección de impulso
+
+	# Si el personaje está mirando a la izquierda (flip_h = true), la dirección horizontal será hacia la izquierda
+	if animated_sprite_2d.flip_h:
+		impulse_direction = Vector2(-150, -400)  # Hacia arriba y hacia la izquierda
+	else:
+		impulse_direction = Vector2(150, -400)  # Hacia arriba y hacia la derecha
+
+	# Aplicar el impulso al proyectil
+	bullet.apply_impulse(impulse_direction, shooting_point.global_position)
+
+	# Añadir el proyectil a la escena
+	get_tree().root.add_child(bullet)
