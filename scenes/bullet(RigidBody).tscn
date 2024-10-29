@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbdq4c8mk348r"]
+
+[ext_resource type="Script" path="res://scripts/bullet(rigid_body).gd" id="1_uh7w5"]
+[ext_resource type="Texture2D" uid="uid://v8q2k0hx2hyg" path="res://assets/sprites/rock.png" id="2_35me1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j3bci"]
+radius = 3.0
+
+[node name="RigidBody2d" type="RigidBody2D"]
+script = ExtResource("1_uh7w5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j3bci")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.5)
+texture = ExtResource("2_35me1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

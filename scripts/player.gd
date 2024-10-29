@@ -5,8 +5,8 @@ extends CharacterBody2D
 @onready var r_key_sprite: Sprite2D = $RKeySprite
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-const BULLET = preload("res://scenes/bullet.tscn")
-
+const BULLET_RIGID_BODY_ = preload("res://scenes/bullet(RigidBody).tscn")
+const BULLET_AREA_2D_ = preload("res://scenes/bullet(Area2D).tscn")
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
@@ -58,28 +58,29 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_just_pressed("attack"):
-		shoot()
-	
+		shoot_raycast()
+	if Input.is_action_just_pressed("attack2"):
+		shoot_impulse()
+
 	if Input.is_action_just_pressed("reload"):
 		reload()
 
 	move_and_slide()
 	
-func shoot():
+func shoot_impulse():
 	if not can_shoot:
-		print("CoolDown: " + str(shoot_cool_down.time_left))
+		print("CoolDown: %.2f" % shoot_cool_down.time_left)
 	if game_manager.player_ammo == 0:
 		print("No Ammo")
 	
 	
 	if game_manager.player_ammo > 0 and can_shoot:
 		# Instanciar el proyectil como un RigidBody2D
-		var bullet = BULLET.instantiate() as RigidBody2D
-
+		var bullet = BULLET_RIGID_BODY_.instantiate()
+		game_manager.player_ammo -= 1
 		# Configurar la posición inicial del proyectil en el punto de disparo
 		bullet.position = shooting_point.global_position
 		
-		game_manager.player_ammo -= 1
 		
 		# Determinar la dirección del impulso basado en la orientación del personaje
 		var impulse_direction = Vector2()  # Inicializar el vector de dirección de impulso
@@ -98,7 +99,34 @@ func shoot():
 		
 		shoot_cool_down.start()
 		can_shoot = false
+		
+func shoot_raycast():
+	if not can_shoot:
+		print("CoolDown: %.2f" % shoot_cool_down.time_left)
+	if game_manager.player_ammo == 0:
+		print("No Ammo")
 	
+	
+	if game_manager.player_ammo > 0 and can_shoot:
+		var bullet_temp = BULLET_AREA_2D_.instantiate()
+		game_manager.player_ammo -= 1
+		# Configurar la posición del proyectil en el punto de disparo
+		bullet_temp.position = shooting_point.global_position
+		
+		# Configurar la dirección según la orientación del personaje
+		var bullet_direction: Vector2
+		if animated_sprite_2d.flip_h:
+			bullet_direction = Vector2(-1, 0)  # Disparar hacia la izquierda
+		else:
+			bullet_direction = Vector2(1, 0)  # Disparar hacia la derecha
+		
+		# Asignar la dirección al proyectil (asumiendo que tiene un método para configurarlo)
+		bullet_temp.set_direction(bullet_direction)
+		
+		# Añadir el proyectil a la escena
+		get_parent().add_child(bullet_temp)
+		shoot_cool_down.start()
+		can_shoot = false
 func reload():
 	if game_manager.player_ammo == 0:
 		print("Realoading")

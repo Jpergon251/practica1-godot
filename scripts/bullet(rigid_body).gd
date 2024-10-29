@@ -3,6 +3,9 @@ extends RigidBody2D
 
 # Velocidad del proyectil
 var speed = 300
+
+
+
 func _ready() -> void:
 	timer.start()
 

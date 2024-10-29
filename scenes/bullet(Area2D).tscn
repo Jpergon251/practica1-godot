@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbdq4c8mk348r"]
+[gd_scene load_steps=4 format=3 uid="uid://cfncx480t8drq"]
 
-[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_epnji"]
-[ext_resource type="Texture2D" uid="uid://v8q2k0hx2hyg" path="res://assets/sprites/rock.png" id="1_wfm3e"]
+[ext_resource type="Script" path="res://scripts/bullet(area_2d).gd" id="1_op5c7"]
+[ext_resource type="Texture2D" uid="uid://v8q2k0hx2hyg" path="res://assets/sprites/rock.png" id="2_630c3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3bci"]
 radius = 3.0
 
-[node name="Area2D" type="RigidBody2D"]
-script = ExtResource("1_epnji")
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_op5c7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j3bci")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -0.5)
-texture = ExtResource("1_wfm3e")
+texture = ExtResource("2_630c3")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
