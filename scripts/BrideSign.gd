@@ -9,4 +9,3 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body):
 	bride_sign_text.visible = false
-

@@ -10,4 +10,3 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body):
 	enemy_sign_text.visible = false
-
