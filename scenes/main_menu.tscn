@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://4g6631j4jd1h"]
+
+[ext_resource type="FontFile" uid="uid://xtnqaqxeb2is" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_6atdo"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_52s5p"]
+[ext_resource type="FontFile" uid="uid://cdmc8kesasqhx" path="res://assets/fonts/PixelOperator8.ttf" id="3_h5akh"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_52s5p")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 66.0
+offset_right = 1038.0
+offset_bottom = 162.0
+theme_override_fonts/font = ExtResource("1_6atdo")
+theme_override_font_sizes/font_size = 64
+text = "Titulo del juego
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 220.0
+offset_right = 720.0
+offset_bottom = 514.0
+alignment = 1
+
+[node name="Button(Play)" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.682353, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_h5akh")
+theme_override_font_sizes/font_size = 24
+text = "Play"
+
+[node name="Button(Quit)" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.682353, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_h5akh")
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Button(Play)" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button(Quit)" to="." method="_on_button_quit_pressed"]

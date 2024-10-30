@@ -7,7 +7,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcpvp"]
 
-[node name="Control" type="Control"]
+[node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,8 +21,6 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_lcpvp")
 
 [node name="Coin" type="Sprite2D" parent="Panel"]
@@ -51,6 +49,7 @@ region_enabled = true
 region_rect = Rect2(4, 5, 8, 7)
 
 [node name="AmmoText" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 70.0
 offset_top = 90.0
 offset_right = 259.0
@@ -62,7 +61,11 @@ text = "Munición"
 
 [node name="ColorRect" type="ColorRect" parent="Panel"]
 z_index = -1
-layout_mode = 0
-offset_right = 421.0
-offset_bottom = 168.0
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.365
+anchor_bottom = 0.259
+offset_right = 0.519989
+offset_bottom = 0.167999
 color = Color(0, 0, 0, 0.0431373)

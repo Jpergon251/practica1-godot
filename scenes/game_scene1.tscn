@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://vubnanmr2bxl" path="res://scenes/coin.tscn" id="10_fv8n1"]
 [ext_resource type="PackedScene" uid="uid://dmjsrkqougkyb" path="res://scenes/UI.tscn" id="11_xvpw0"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gf182"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx7n6"]
 texture = ExtResource("3_81q7v")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -181,7 +181,7 @@ texture = ExtResource("3_81q7v")
 
 [sub_resource type="TileSet" id="TileSet_s488q"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_gf182")
+sources/0 = SubResource("TileSetAtlasSource_jx7n6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67neu"]
 size = Vector2(16, 16)
@@ -325,7 +325,7 @@ _data = {
 "RESET": SubResource("Animation_0x1cn")
 }
 
-[node name="Game_Scene1" type="Node2D"]
+[node name="GameScene1" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
