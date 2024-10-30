@@ -196,4 +196,12 @@ position = Vector2(12, -11)
 scale = Vector2(0.625, 0.625)
 texture = ExtResource("3_nfde6")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 4)
+zoom = Vector2(4, 4)
+limit_bottom = 128
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
 [connection signal="timeout" from="ShootCoolDown" to="." method="_on_shoot_cool_down_timeout"]

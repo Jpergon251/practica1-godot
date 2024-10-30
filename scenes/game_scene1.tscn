@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dqjeq7yfaclf6"]
+[gd_scene load_steps=25 format=3 uid="uid://dqjeq7yfaclf6"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_n5dcn"]
 [ext_resource type="FontFile" uid="uid://cdmc8kesasqhx" path="res://assets/fonts/PixelOperator8.ttf" id="2_x3727"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://pltofxmbhn61" path="res://scenes/Platform.tscn" id="9_juoso"]
 [ext_resource type="PackedScene" uid="uid://vubnanmr2bxl" path="res://scenes/coin.tscn" id="10_fv8n1"]
 [ext_resource type="PackedScene" uid="uid://dmjsrkqougkyb" path="res://scenes/UI.tscn" id="11_xvpw0"]
+[ext_resource type="PackedScene" uid="uid://dbwgafxn47n3c" path="res://scenes/teleporter.tscn" id="12_o7drc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx7n6"]
 texture = ExtResource("3_81q7v")
@@ -359,14 +360,6 @@ layer_1/tile_data = PackedInt32Array(196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 1
 z_index = 5
 position = Vector2(39, 29)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, 4)
-zoom = Vector2(4, 4)
-limit_bottom = 128
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
-
 [node name="Killzone" parent="." instance=ExtResource("5_b1fsy")]
 position = Vector2(24, 141)
 collision_mask = 2
@@ -583,6 +576,10 @@ position = Vector2(664, 54)
 
 [node name="Coin22" parent="Coins" instance=ExtResource("10_fv8n1")]
 position = Vector2(712, 19)
+
+[node name="Portal1" parent="." instance=ExtResource("12_o7drc")]
+position = Vector2(-200, 74)
+scene_name = "game_scene_2"
 
 [connection signal="body_entered" from="Sign" to="Sign" method="_on_body_entered"]
 [connection signal="body_exited" from="Sign" to="Sign" method="_on_body_exited"]
