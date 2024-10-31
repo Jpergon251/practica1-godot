@@ -17,6 +17,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var can_shoot = true
 func _ready() -> void:
+	print(position)
 	if GameManager:
 		GameManager.ui = ui  # Pasa la referencia de la UI al GameManager
 

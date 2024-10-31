@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://dqjeq7yfaclf6"]
+[gd_scene load_steps=23 format=3 uid="uid://dqjeq7yfaclf6"]
 
-[ext_resource type="Script" path="res://scripts/game_scene_1.gd" id="1_vyqbw"]
+[ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_vyqbw"]
 [ext_resource type="FontFile" uid="uid://cdmc8kesasqhx" path="res://assets/fonts/PixelOperator8.ttf" id="2_x3727"]
 [ext_resource type="Texture2D" uid="uid://c2nfmgpypt3hw" path="res://assets/sprites/world_tileset.png" id="3_81q7v"]
-[ext_resource type="PackedScene" uid="uid://bgsj6cok1qnhy" path="res://scenes/player.tscn" id="4_5tsma"]
 [ext_resource type="PackedScene" uid="uid://dyy1ntt6oppsw" path="res://scenes/killzone.tscn" id="5_b1fsy"]
 [ext_resource type="PackedScene" uid="uid://08qo885f4rew" path="res://scenes/slime.tscn" id="6_farvm"]
 [ext_resource type="Script" path="res://scripts/BrideSign.gd" id="7_3nfac"]
@@ -328,6 +327,9 @@ _data = {
 [node name="GameScene1" type="Node2D"]
 script = ExtResource("1_vyqbw")
 
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(39, 29)
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_s488q")
 format = 2
@@ -557,12 +559,6 @@ position = Vector2(712, 19)
 [node name="Portal1" parent="." instance=ExtResource("12_o7drc")]
 position = Vector2(-200, 72)
 scene_name = "game_scene_2"
-
-[node name="SpawnPoint" type="Node2D" parent="Portal1"]
-
-[node name="Player" parent="." instance=ExtResource("4_5tsma")]
-z_index = 5
-position = Vector2(39, 29)
 
 [connection signal="body_entered" from="Sign" to="Sign" method="_on_body_entered"]
 [connection signal="body_exited" from="Sign" to="Sign" method="_on_body_exited"]

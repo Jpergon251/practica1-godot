@@ -43,16 +43,18 @@ func add_point():
 	update_score_label()  # Actualizar el label
 
 # Método para cambiar de escena
-func change_scene_teleport(scene_name: String, spawn_point):
-	print("Cambiando escena a: " + scene_name)
-	get_tree().change_scene_to_file.bind("res://scenes/" + scene_name + ".tscn").call_deferred()
-	
-	if player == null:
-		player = PLAYER.instantiate()
-		player.position = spawn_point
-		get_tree().root.add_child(player)  # Agregar el jugador a la escena actual
-	else:
-		print("El jugador ya está instanciado en la escena.")
+#func change_scene_teleport(scene_name: String, spawn_point):
+	#print("Cambiando escena a: " + scene_name)
+	#get_tree().change_scene_to_file.bind("res://scenes/" + scene_name + ".tscn").call_deferred()
+	#
+	#if player == null:
+		#player = PLAYER.instantiate()
+		#player.position = spawn_point
+		#get_tree().root.add_child(player)
+		#
+		  ## Agregar el jugador a la escena actual
+	#else:
+		#print("El jugador ya está instanciado en la escena.")
 	
 
 	
