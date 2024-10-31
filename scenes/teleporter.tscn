@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbwgafxn47n3c"]
+[gd_scene load_steps=4 format=3 uid="uid://dbwgafxn47n3c"]
 
-[ext_resource type="Script" path="res://scenes/teleporter.gd" id="1_08k8r"]
+[ext_resource type="Script" path="res://scripts/teleporter.gd" id="1_08k8r"]
+[ext_resource type="Texture2D" uid="uid://dwhwhvf6s1xfe" path="res://assets/sprites/PuertaSprite.png" id="2_ugkuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjg15"]
-size = Vector2(9, 11)
+size = Vector2(7, 12)
 
 [node name="PortalGeneric" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_08k8r")
 
+[node name="PuertaSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ugkuy")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_mjg15")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
