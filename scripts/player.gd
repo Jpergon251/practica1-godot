@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var shoot_cool_down: Timer = $ShootCoolDown
 @onready var r_key_sprite: Sprite2D = $RKeySprite
+@onready var ui: Control = $CanvasLayer/UI
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 const BULLET_RIGID_BODY_ = preload("res://scenes/bullet(RigidBody).tscn")
@@ -15,6 +16,9 @@ const JUMP_VELOCITY = -300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var can_shoot = true
+func _ready() -> void:
+	if GameManager:
+		GameManager.ui = ui  # Pasa la referencia de la UI al GameManager
 
 func _physics_process(delta):
 		

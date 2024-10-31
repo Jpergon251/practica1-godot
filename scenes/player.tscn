@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://bgsj6cok1qnhy"]
+[gd_scene load_steps=28 format=3 uid="uid://bgsj6cok1qnhy"]
 
 [ext_resource type="Texture2D" uid="uid://irava252gxbg" path="res://assets/sprites/knight.png" id="1_5yadh"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_yawiu"]
 [ext_resource type="Texture2D" uid="uid://bjv2dsqowmd88" path="res://assets/sprites/R key.png" id="3_nfde6"]
+[ext_resource type="PackedScene" uid="uid://dmjsrkqougkyb" path="res://scenes/UI.tscn" id="4_l86ff"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4q7xk"]
 atlas = ExtResource("1_5yadh")
@@ -203,5 +204,9 @@ limit_bottom = 128
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("4_l86ff")]
 
 [connection signal="timeout" from="ShootCoolDown" to="." method="_on_shoot_cool_down_timeout"]

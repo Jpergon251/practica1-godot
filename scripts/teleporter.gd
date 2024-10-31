@@ -9,6 +9,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		print("Ha entrado el jugador")
 		
-		GameManager.change_scene_teleport(scene_name, spawn_point.position)
-		print(get_tree())
+		GameManager.change_scene_teleport(scene_name, spawn_point.global_position)
 		
