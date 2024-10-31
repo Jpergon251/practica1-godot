@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @onready var shooting_point: Node2D = $ShootingPoint
-@onready var game_manager: Node = %GameManager
+
 @onready var shoot_cool_down: Timer = $ShootCoolDown
 @onready var r_key_sprite: Sprite2D = $RKeySprite
 
@@ -17,9 +17,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var can_shoot = true
 
 func _physics_process(delta):
-	
-	if game_manager.player_ammo == 0:
-		r_key_sprite.visible = true
+		
+	if GameManager.player_ammo == 0:		r_key_sprite.visible = true
 	else:
 		r_key_sprite.visible = false
 	# Add the gravity.
@@ -70,14 +69,14 @@ func _physics_process(delta):
 func shoot_impulse():
 	if not can_shoot:
 		print("CoolDown: %.2f" % shoot_cool_down.time_left)
-	if game_manager.player_ammo == 0:
+	if GameManager.player_ammo == 0:
 		print("No Ammo")
 	
 	
-	if game_manager.player_ammo > 0 and can_shoot:
+	if GameManager.player_ammo > 0 and can_shoot:
 		# Instanciar el proyectil como un RigidBody2D
 		var bullet = BULLET_RIGID_BODY_.instantiate()
-		game_manager.player_ammo -= 1
+		GameManager.player_ammo -= 1
 		# Configurar la posición inicial del proyectil en el punto de disparo
 		bullet.position = shooting_point.global_position
 		
@@ -103,13 +102,13 @@ func shoot_impulse():
 func shoot_raycast():
 	if not can_shoot:
 		print("CoolDown: %.2f" % shoot_cool_down.time_left)
-	if game_manager.player_ammo == 0:
+	if GameManager.player_ammo == 0:
 		print("No Ammo")
 	
 	
-	if game_manager.player_ammo > 0 and can_shoot:
+	if GameManager.player_ammo > 0 and can_shoot:
 		var bullet_temp = BULLET_AREA_2D_.instantiate()
-		game_manager.player_ammo -= 1
+		GameManager.player_ammo -= 1
 		# Configurar la posición del proyectil en el punto de disparo
 		bullet_temp.position = shooting_point.global_position
 		
@@ -128,10 +127,10 @@ func shoot_raycast():
 		shoot_cool_down.start()
 		can_shoot = false
 func reload():
-	if game_manager.player_ammo == 0:
+	if GameManager.player_ammo == 0:
 		print("Realoading")
 		
-		game_manager.player_ammo = 5
+		GameManager.player_ammo = 5
 		
 
 

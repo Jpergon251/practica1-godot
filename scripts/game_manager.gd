@@ -6,8 +6,7 @@ extends Node  # Asegúrate de que tu GameManager herede de Node
 @onready var coins = $"../Coins"  # Ruta hacia el nodo Coins
 const PLAYER = preload("res://scenes/player.tscn")
 
-@onready var game_scene_1: Node2D = $".."
-@onready var game_scene_2: Node2D = $".."
+
 
 
 var total_coins 
@@ -42,8 +41,13 @@ func add_point():
 	update_score_label()  # Actualizar el label
 
 # Método para cambiar de escena
-func change_scene_teleport(scene_name: String):
+func change_scene_teleport(scene_name: String, spawn_point: Vector2):
 	print("Cambiando escena a: " + scene_name)
-	get_tree().change_scene_to_file("res://scenes/" + scene_name + ".tscn")
+	get_tree().change_scene_to_file.bind("res://scenes/" + scene_name + ".tscn").call_deferred()
+	
+	
 	var player = PLAYER.instantiate()
-	game_scene_2.add_child(player)
+	player.position = spawn_point
+
+	get_tree().root.add_child(player)
+	
